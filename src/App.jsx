@@ -1,20 +1,22 @@
 import { useState } from "react";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import ShowWather from "./pages/ShowWeather";
-import { BrowserRouter, Routes, Route } from "react-router";
+import ShowWeather from "./pages/ShowWeather";
 import Home from "./pages/Home";
 import { ToastContainer } from "react-toastify";
+
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <ToastContainer />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/weather/:selectedCity" element={<ShowWather />} />
+        {/* ✅ only /weather (no :params) */}
+        <Route path="/weather" element={<ShowWeather />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
